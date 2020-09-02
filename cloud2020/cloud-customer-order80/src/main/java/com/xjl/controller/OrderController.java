@@ -30,7 +30,7 @@ public class OrderController {
     }
 
     @GetMapping("/payment/get/{id}")
-    public ResultResponse getPayment(@PathVariable("id") Long id){
-        return restTemplate.getForObject(PAYMENT_URL+"/payment/find?id="+id,ResultResponse.class);
+    public ResultResponse getPayment(@PathVariable Long id){
+        return restTemplate.getForObject(PAYMENT_URL+"/payment/get/"+id,ResultResponse.class);
     }
 }

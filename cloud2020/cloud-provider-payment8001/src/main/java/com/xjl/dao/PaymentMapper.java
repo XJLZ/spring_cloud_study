@@ -1,8 +1,8 @@
 package com.xjl.dao;
 
-import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.xjl.domain.Payment;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 /**
  * @Author: 玲
@@ -11,6 +11,10 @@ import org.apache.ibatis.annotations.Mapper;
  * @Modified By:
  */
 @Mapper
-public interface PayMentMapper extends BaseMapper<Payment> {
+public interface PaymentMapper {
+
+    int create(Payment payment);
+
+    Payment getPaymentById(@Param("id") Long id);
 
 }

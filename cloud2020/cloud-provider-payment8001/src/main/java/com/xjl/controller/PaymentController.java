@@ -1,7 +1,7 @@
 package com.xjl.controller;
 
 import com.xjl.domain.Payment;
-import com.xjl.service.PayMentService;
+import com.xjl.service.PaymentService;
 import com.xjl.vo.ResultResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
@@ -19,17 +19,21 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 public class PaymentController {
     @Autowired
-    private PayMentService payMentService;
+    private PaymentService paymentService;
 
     @PostMapping("save")
-    public ResultResponse add(@RequestBody Payment payment){
-        payMentService.save(payment);
-        return ResultResponse.ok(payment);
+    public ResultResponse add(@RequestBody Payment payment) {
+        int result = paymentService.create(payment);
+        if (result > 0){
+            return ResultResponse.ok(payment);
+        }else{
+            return ResultResponse.error("插入失败");
+        }
     }
 
-    @GetMapping("find")
-    public ResultResponse getById(Long id){
-        return ResultResponse.ok(payMentService.getById(id));
+    @GetMapping("get/{id}")
+    public ResultResponse getById(@PathVariable Long id) {
+        return ResultResponse.ok(paymentService.getPaymentById(id));
     }
 
 }
