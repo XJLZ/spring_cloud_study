@@ -20,17 +20,19 @@ import javax.annotation.Resource;
 @RequestMapping("customer")
 public class OrderController {
 
-    private static final String PAYMENT_URL="http://localhost:8001";
+    //    private static final String PAYMENT_URL="http://localhost:8001";
+    private static final String PAYMENT_URL = "http://CLOUD-PROVIDER-SERVICE";
+
     @Resource
     private RestTemplate restTemplate;
 
     @GetMapping("/payment/save")
-    public ResultResponse create(Payment payment){
-        return restTemplate.postForObject(PAYMENT_URL+"/payment/save",payment, ResultResponse.class);
+    public ResultResponse create(Payment payment) {
+        return restTemplate.postForObject(PAYMENT_URL + "/payment/save", payment, ResultResponse.class);
     }
 
     @GetMapping("/payment/get/{id}")
-    public ResultResponse getPayment(@PathVariable Long id){
-        return restTemplate.getForObject(PAYMENT_URL+"/payment/get/"+id,ResultResponse.class);
+    public ResultResponse getPayment(@PathVariable Long id) {
+        return restTemplate.getForObject(PAYMENT_URL + "/payment/get/" + id, ResultResponse.class);
     }
 }
