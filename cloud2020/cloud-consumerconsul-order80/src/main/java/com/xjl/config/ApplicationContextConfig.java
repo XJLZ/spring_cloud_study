@@ -8,13 +8,13 @@ import org.springframework.web.client.RestTemplate;
 /**
  * @Author: 玲
  * @Description:
- * @create 2020-08-10 20:02
+ * @create 2020-09-07 11:11
  * @Modified By:
  */
 @Configuration
 public class ApplicationContextConfig {
     @Bean
-//    @LoadBalanced
+    @LoadBalanced
     public RestTemplate getRestTemplate(){
         return new RestTemplate();
     }

@@ -42,4 +42,8 @@ public class PaymentController {
         return hs;
     }
 
+    @GetMapping("/lb")
+    public String loadBalance(){
+        return port;
+    }
 }
