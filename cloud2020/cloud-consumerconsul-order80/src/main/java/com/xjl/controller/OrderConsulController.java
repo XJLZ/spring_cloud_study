@@ -1,5 +1,6 @@
 package com.xjl.controller;
 
+import com.xjl.service.PaymentConsulService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,6 +20,14 @@ public class OrderConsulController {
     public static final String INVOKE_URL = "http://consul-provider-peyment";
     @Autowired
     private RestTemplate restTemplate;
+    @Autowired
+    private PaymentConsulService paymentConsulService;
+
+
+    @GetMapping("/consul/of")
+    public String openFeign(){
+        return paymentConsulService.paymentConsul();
+    }
 
     @GetMapping("/consul")
     public String paymentInfo() {

@@ -17,22 +17,22 @@ import org.springframework.web.client.RestTemplate;
 @RequestMapping
 @RestController
 public class OrderZKController {
-//    public static final String INVOKE_URL = "http://cloud-provider-payment";
+    public static final String INVOKE_URL = "http://cloud-provider-payment";
 
-//    @Autowired
-//    private RestTemplate restTemplate;
+    @Autowired
+    private RestTemplate restTemplate;
 
     @Autowired
     private PaymentFeignService paymentFeignService;
 
-    @GetMapping("/payment/zk")
+    @GetMapping("/payment/zk/of")
     public String loadBalance(){
         return paymentFeignService.getPort();
     }
 
-//    @GetMapping("/payment/zk")
-//    public String paymentInfo(){
-//        String result = restTemplate.getForObject(INVOKE_URL+"/payment/zk",String.class);
-//        return result;
-//    }
+    @GetMapping("/payment/zk")
+    public String paymentInfo(){
+        String result = restTemplate.getForObject(INVOKE_URL+"/payment/zk",String.class);
+        return result;
+    }
 }
