@@ -23,5 +23,4 @@ public interface PaymentHystrixService {
     String paymentInfo_TimeOut(@PathVariable("id") Integer id);
 
 
-
 }
