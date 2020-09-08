@@ -16,4 +16,7 @@ public interface PaymentConsulService {
 
     @GetMapping("/payment/consul")
     String paymentConsul();
+
+    @GetMapping("/payment/timeout")
+    String timeout();
 }

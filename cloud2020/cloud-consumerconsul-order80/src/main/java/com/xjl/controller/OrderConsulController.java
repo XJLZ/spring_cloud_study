@@ -25,8 +25,13 @@ public class OrderConsulController {
 
 
     @GetMapping("/consul/of")
-    public String openFeign(){
+    public String openFeign() {
         return paymentConsulService.paymentConsul();
+    }
+
+    @GetMapping("/consul/timeout")
+    public String timeout() {
+        return paymentConsulService.timeout();
     }
 
     @GetMapping("/consul")

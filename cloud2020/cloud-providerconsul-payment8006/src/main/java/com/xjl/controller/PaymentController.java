@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.UUID;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @Author: 玲
@@ -24,6 +25,17 @@ public class PaymentController {
     @GetMapping("/consul")
     public String paymentConsul() {
         return "springcloud with consul：" + serverPort + "\t" + UUID.randomUUID().toString();
+    }
+
+    @GetMapping("timeout")
+    public String timeout(){
+        // 暂停3秒
+        try {
+            TimeUnit.SECONDS.sleep(3L);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return serverPort;
     }
 
 }
