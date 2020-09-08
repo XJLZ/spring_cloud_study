@@ -12,7 +12,7 @@
     <artifactId>cloud-providerconsul-payment8006</artifactId>
 
     <dependencies>
-        <!--springcloud consul-server-->
+        <!--spring cloud consul-server-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-consul-discovery</artifactId>
