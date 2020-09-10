@@ -30,13 +30,13 @@ public class PaymentService {
      * @HystrixCommand报异常后如何处理： 一旦调用服务方法失败并抛出了错误信息后，
      * 会自动调用@HystrixCommand标注好的fallbackMethod调用类中的指定方法
      */
-    @HystrixCommand(fallbackMethod = "paymentInfo_TimeOutHandler", commandProperties = {
+    @HystrixCommand(fallbackMethod = "paymentInfoTimeOutHandler", commandProperties = {
             //设置这个线程的超时时间是3s，3s内是正常的业务逻辑，超过3s调用fallbackMethod指定的方法进行处理
             @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "3000")
     })
     public String paymentInfo_Timeout(Integer id) {
-        int timeNumber = 1;
 //        int result = 1/0;
+        int timeNumber = 2;
         try {
             TimeUnit.SECONDS.sleep(timeNumber);
         } catch (InterruptedException e) {
@@ -46,7 +46,7 @@ public class PaymentService {
     }
 
 
-    public String paymentInfo_TimeOutHandler(Integer id) {
+    public String paymentInfoTimeOutHandler(Integer id) {
         return "线程池：" + Thread.currentThread().getName() + "   系统繁忙，请稍后再试,id：" + id + "\t" + "o(╥﹏╥)o";
     }
 

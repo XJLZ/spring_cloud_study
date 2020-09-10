@@ -32,11 +32,12 @@ public class OrderHystrixController {
     }
 
 
-    @HystrixCommand(fallbackMethod = "paymentTimeOutFallBackMethod", commandProperties = {
-            @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "5000")
-    })
+//    @HystrixCommand(fallbackMethod = "paymentTimeOutFallBackMethod", commandProperties = {
+//            @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "5000")
+//    })
     @GetMapping("/timeout/{id}")
     public String paymentInfo_TimeOut(@PathVariable("id") Integer id) {
+//        int result = 1 / 0;
         return paymentHystrixService.paymentInfo_TimeOut(id);
     }
 
