@@ -8,11 +8,11 @@ import org.springframework.context.annotation.Configuration;
 
 /**
  * @Author: 玲
- * @Description:
+ * @Description: 非配置文件配置路由
  * @create 2020-09-10 20:20
  * @Modified By:
  */
-//@Configuration
+@Configuration
 public class GateWayConfig {
     /**
      * 配置一个id为route-name的路由规则，
@@ -21,13 +21,13 @@ public class GateWayConfig {
      * @param routeLocatorBuilder
      * @return
      */
-//    @Bean
+    @Bean
     public RouteLocator customRouteLocator(RouteLocatorBuilder routeLocatorBuilder) {
         RouteLocatorBuilder.Builder routes = routeLocatorBuilder.routes();
 
         routes.route("path_route_baidu",
-                r -> r.path("/payment/hystrix/ok/**")
-                        .uri("lb://cloud-provider-hystrix-payment")
+                r -> r.path("/guonei")
+                        .uri("https://news.baidu.com/guonei")
                         .filters(new CustomGatewayFilter()))
                 .build();
         return routes.build();

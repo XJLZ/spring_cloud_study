@@ -1,0 +1,24 @@
+server:
+  port: 3344
+
+spring:
+  application:
+    name: cloud-config-center
+  cloud:
+    consul:
+      host: 192.168.186.138
+      port: 8500
+      discovery:
+        service-name: ${spring.application.name}
+    config:
+      server:
+        git:
+          uri: https://gitlab.com/XJLNB/cloud-config.git #gitlab仓库上面的git仓库名字
+          #若仓库是公有的无需账户密码
+          username: XJLNB
+          password: yz3ZBsic$/=NP`g
+          ##搜索目录
+          search-paths:
+            - cloud-config
+      #读取分支
+      label: master
