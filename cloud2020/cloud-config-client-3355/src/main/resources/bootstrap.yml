@@ -1,0 +1,33 @@
+server:
+  port: 3355
+
+spring:
+  application:
+    name: cloud-config-client
+  cloud:
+    consul:
+      host: 192.168.186.138
+      port: 8500
+      discovery:
+        service-name: ${spring.application.name}
+    config:
+      label: master #分支名
+      name: config  #配置文件名称
+      profile: dev  #读取后缀名    综上，读取 http://localhost:3344/master/config-dev.yml
+      uri: http://localhost:3344
+  #rabbit相关配置 15672是web管理界面的端口，5672是MQ访问的端口
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest    #这是客户端，不需要刷新
+#添加配置，暴露监控端点
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+
+        # curl -X -POST "http://localhost:3344/actuator/bus-refresh/config-client:3355"  定点通知
+        # curl -X -POST "http://localhost:3344/actuator/bus-refresh" 全局广播
