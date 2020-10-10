@@ -6,7 +6,7 @@ spring:
     name: cloud-config-center
   cloud:
     consul:
-      host: 192.168.186.138
+      host: 192.168.186.139
       port: 8500
       discovery:
         service-name: ${spring.application.name}
@@ -28,7 +28,7 @@ spring:
       #   /config/dev/master   json串   /config/dev/dev
 
   rabbitmq:
-    host: localhost
+    host: 192.168.186.139
     port: 5672
     username: guest
     password: guest
@@ -38,3 +38,7 @@ management:
     web:
       exposure:
         include: 'bus-refresh'  #凡是暴露监控、刷新的都要有actuator依赖，bus-refresh就是actuator的刷新操作
+
+
+        # curl -X POST "http://localhost:3344/actuator/bus-refresh/cloud-config-client:3355"  定点通知
+        # curl -X POST "http://localhost:3344/actuator/bus-refresh" 全局广播

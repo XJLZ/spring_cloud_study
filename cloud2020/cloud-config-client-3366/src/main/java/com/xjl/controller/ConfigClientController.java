@@ -3,12 +3,7 @@ package com.xjl.controller;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * @Author: 玲
@@ -20,13 +15,13 @@ import java.util.Map;
 @RefreshScope
 public class ConfigClientController {
 
-    @Value("${config.info}")
+    @Value("${server.port}")
+    private String serverPort;
+    @Value(("${config.info}"))
     private String configInfo;
 
     @GetMapping("/configInfo")
-    public Map<String,String> getConfigInfo(){
-        HashMap<String, String> map = new HashMap<>(16);
-        map.put("info", configInfo);
-        return map;
+    public String getConfigInfo(){
+        return "serverPort: "+serverPort+"\t\n\n configInfo: "+configInfo;
     }
 }
