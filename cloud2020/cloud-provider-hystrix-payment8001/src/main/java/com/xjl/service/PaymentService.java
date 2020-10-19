@@ -42,6 +42,7 @@ public class PaymentService {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+        System.out.println("==="+"线程池：" + Thread.currentThread().getName() + "   paymentInfo_Timeout,id：" + id + "\t" + "O(∩_∩)O哈哈~" + "   耗时(秒)：" + timeNumber+"========");
         return "线程池：" + Thread.currentThread().getName() + "   paymentInfo_Timeout,id：" + id + "\t" + "O(∩_∩)O哈哈~" + "   耗时(秒)：" + timeNumber;
     }
 

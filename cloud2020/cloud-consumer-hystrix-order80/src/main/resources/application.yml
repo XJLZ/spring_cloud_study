@@ -6,10 +6,11 @@ spring:
     name: cloud-order-hystrix-payment
   cloud:
     consul:
-      host: 192.168.186.138
+      host: 192.168.186.142
       port: 8500
       discovery:
         service-name: ${spring.application.name}
+
 feign:
   hystrix:
     enabled: true

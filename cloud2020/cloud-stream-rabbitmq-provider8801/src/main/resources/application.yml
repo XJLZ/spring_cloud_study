@@ -12,7 +12,7 @@ spring:
           environment: # 设置rabbitmq的相关的环境配置
             spring:
               rabbitmq:
-                host: 192.168.186.139
+                host: 192.168.186.142
                 port: 5672
                 username: test
                 password: test
@@ -23,7 +23,7 @@ spring:
           binder: defaultRabbit # 设置要绑定的消息服务的具体设置
 
     consul:
-      host: 192.168.186.139
+      host: 192.168.186.142
       port: 8500
       discovery:
         service-name: ${spring.application.name}

@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.concurrent.TimeUnit;
+
 /**
  * @Author: 玲
  * @Description:
@@ -32,12 +34,17 @@ public class OrderHystrixController {
     }
 
 
-//    @HystrixCommand(fallbackMethod = "paymentTimeOutFallBackMethod", commandProperties = {
-//            @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "5000")
-//    })
+    @HystrixCommand(fallbackMethod = "paymentTimeOutFallBackMethod", commandProperties = {
+            @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "5000")
+    })
     @GetMapping("/timeout/{id}")
     public String paymentInfo_TimeOut(@PathVariable("id") Integer id) {
 //        int result = 1 / 0;
+        try {
+            TimeUnit.SECONDS.sleep(6);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         return paymentHystrixService.paymentInfo_TimeOut(id);
     }
 
@@ -56,5 +63,6 @@ public class OrderHystrixController {
     public String paymentGlobalFallbackMethod() {
         return "Payment_Global_FallbackMethod: 全局异常处理，系统繁忙，请稍后再试，o(╥﹏╥)o";
     }
+
 
 }

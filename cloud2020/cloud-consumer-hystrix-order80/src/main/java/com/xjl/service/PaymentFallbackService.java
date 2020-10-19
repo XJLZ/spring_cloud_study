@@ -19,4 +19,5 @@ public class PaymentFallbackService implements PaymentHystrixService {
     public String paymentInfo_TimeOut(Integer id) {
         return "降级处理------paymentInfo_TimeOut--请稍后再试，o(╥﹏╥)o";
     }
+
 }

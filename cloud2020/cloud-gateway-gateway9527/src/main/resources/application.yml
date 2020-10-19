@@ -15,7 +15,7 @@ spring:
     name: cloud-gateway
   cloud:
     consul:
-      host: 192.168.186.138
+      host: 192.168.186.142
       port: 8500
       discovery:
         service-name: ${spring.application.name}
@@ -29,8 +29,8 @@ spring:
           uri: lb://cloud-provider-hystrix-payment  #匹配后提供服务的路由地址，lb后跟提供服务的微服务的名，不要写错
           predicates:
           - Path=/payment/hystrix/ok/*         #断言，路径相匹配的进行路由
-          - Before=2020-12-13T11:21:12.052+08:00[Asia/Shanghai]  #只有在这个点之后才能被访问 (before,between)
-          - Cookie=username,zzyy
+          - Before=2020-12-13T11:21:12.052+08:00[Asia/Shanghai]  #只有在这个点之后***********come in MyLogGateWayFilter才能被访问 (before,between)
+#          - Cookie=username,zzyy
 #          - Header=username,\d+
 #          - Host=**.xjl.com
 #          - Query=password,123qwe     #要有参数名password并且值还要是123qwe才能路由
