@@ -6,7 +6,7 @@ spring:
     name: cloud-consumer-order
   cloud:
     consul:
-      host: 192.168.186.138
+      host: 192.168.186.140
       port: 8500
       discovery:
         service-name: ${spring.application.name}
@@ -17,3 +17,15 @@ ribbon:
   ReadTimeout: 5000
   #指的是建立连接后从服务器读取到可用资源所用的时间
   ConnectTimeout: 5000
+
+feign:
+  hystrix:
+    enabled: true
+
+hystrix:
+  command:
+    default: #也可以针对多个服务
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 5000 # 设置hystrix的超时时间为4000ms

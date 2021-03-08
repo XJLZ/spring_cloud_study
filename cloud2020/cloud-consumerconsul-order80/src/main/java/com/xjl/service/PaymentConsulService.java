@@ -1,5 +1,6 @@
 package com.xjl.service;
 
+import com.xjl.service.fallback.PaymentConsulServiceFallback;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,7 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
  * @Modified By:
  */
 @Component
-@FeignClient("consul-provider-payment")
+@FeignClient(value = "consul-provider-payment",contextId = "consulClient",fallbackFactory = PaymentConsulServiceFallback.class)
 public interface PaymentConsulService {
 
     @GetMapping("/payment/consul")

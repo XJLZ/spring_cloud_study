@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @FeignClient(value = "cloud-provider-payment")  //指定调用哪个微服务
 public interface PaymentFeignService {
 
-    @GetMapping("/payment/zk")
+    @GetMapping("/payment/zk/of")
     String getPort();
 
 }

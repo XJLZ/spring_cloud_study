@@ -27,6 +27,7 @@ public class PaymentController {
     @GetMapping("/consul")
     public String paymentConsul() {
         log.info("consul-provider-payment"+ serverPort);
+        int err = 1/0;
         return "springcloud with consul：" + serverPort + "\t" + UUID.randomUUID().toString();
     }
 
@@ -35,7 +36,7 @@ public class PaymentController {
         log.info("consul-provider-payment-timeout"+ serverPort);
         // 暂停3秒
         try {
-            TimeUnit.SECONDS.sleep(3L);
+            TimeUnit.SECONDS.sleep(6L);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
